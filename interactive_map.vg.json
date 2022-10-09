@@ -64,7 +64,7 @@
           "transform": [
             {"filter": "datum.DAY_OF_WEEK == select_day"}
           ],
-          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "mark": {"type": "circle"},
           "encoding": {
             "longitude": {"field": "Long", "type": "quantitative"},
             "latitude": {"field": "Lat", "type": "quantitative"},
@@ -80,7 +80,9 @@
               "title": "Severity",
               "scale": {"scheme": "yelloworangered"}
             }
-          
+            "tooltip": [{"field": "SEVERITY", "type": "quantitative", "title": "Accident severity"}, 
+          {"field": "NO_PERSONS", "type": "quantitative", "title": "Number of people involved"}
+          ]
           }
       }
     ]
