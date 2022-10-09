@@ -1,92 +1,87 @@
 {
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 850,
-  "height": 500,
-  "config": {
-    "background": "aliceblue",
-      "axis": {
-        "grid": true,
-        "gridColor": "#dedede"
-      }
-  },
-  "title": "Victorian Road Accidents",
-  "params": [
-    {
-      "name": "zoom_level",
-      "value": 30000,
-      "bind": {
-        "input": "range",
-        "min": 3500,
-        "max": 60000,
-        "step": 100,  
-        "name": "Zoom: "
-      }
-    },
-    {
-      "name": "select_day",
-      "value": 1,
-      "bind": {
-        "input": "select",
-        "options": [1,2,3,4,5,6,7],
-        "labels": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "name": "Day of the Week: "
-      }
-    }
-  ],
-  "projection": {
-    "center": [145.1, -38],
-    "scale": {"expr": "zoom_level"}
-  },
-  "layer": [
-    {
-      "data": {
-        "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/VicRoads_Regions.topojson",
-      "format": {"type": "topojson", "feature": "VicRoads_Regions"},
-      },
-      "transform": [
-        {
-          "calculate": "'Data is not available in this area'",
-          "as": "note"
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 850,
+    "height": 500,
+    "config": {
+      "background": "aliceblue",
+        "axis": {
+          "grid": true,
+          "gridColor": "#dedede"
         }
-      ],
-      "mark": {
-        "type": "geoshape",
-        "fill": "#ddd", 
-        "stroke": "white",
-        "strokeWidth": 1
-      },
-      "encoding": {"tooltip": {"field": "note"}}
     },
-    {
-      "data": {
-          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
+    "title": "Victorian Road Accidents",
+    "params": [
+      {
+        "name": "zoom_level",
+        "value": 30000,
+        "bind": {
+          "input": "range",
+          "min": 3500,
+          "max": 60000,
+          "step": 100,  
+          "name": "Zoom: "
+        }
+      },
+      {
+        "name": "select_day",
+        "value": 1,
+        "bind": {
+          "input": "select",
+          "options": [1,2,3,4,5,6,7],
+          "labels": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "name": "Day of the Week: "
+        }
+      }
+    ],
+    "projection": {
+      "center": [145.1, -38],
+      "scale": {"expr": "zoom_level"}
+    },
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/VicRoads_Regions.topojson",
+        "format": {"type": "topojson", "feature": "VicRoads_Regions"}
         },
         "transform": [
-          {"filter": "datum.DAY_OF_WEEK == select_day"}
+          {
+            "calculate": "'Data is not available in ' + datum.properties.NAME",
+            "as": "note"
+          }
         ],
-        "mark": 
-        {
-          "type": "circle"
+        "mark": {
+          "type": "geoshape",
+          "fill": "#ddd", 
+          "stroke": "white",
+          "strokeWidth": 1
+        },
+        "encoding": {"tooltip": {"field": "note"}}
+      },
+      {
+        "data": {
+            "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
           },
-        "encoding": {
-          "longitude": {"field": "Long", "type": "quantitative"},
-          "latitude": {"field": "Lat", "type": "quantitative"},
-          "size": {
-            "field": "NO_PERSONS",
-            "type": "quantitative",
-            "title": "Number of people involved",
-            "scale": {"domain": [1, 15]}
-          },
-          "color": {
-            "field": "SEVERITY",
-            "type": "nominal",
-            "title": "Severity",
-            "scale": {"scheme": "yelloworangered"}
-          },
-          "tooltip": [{"field": "SEVERITY", "type": "quantitative", "title": "Accident severity"}, 
-          {"field": "NO_PERSONS", "type": "quantitative", "title": "Number of people involved"}
-          ]
-        }
-    }
-  ]
-}
+          "transform": [
+            {"filter": "datum.DAY_OF_WEEK == select_day"}
+          ],
+          "mark": {"type": "circle", "tooltip": {"content": "data"}},
+          "encoding": {
+            "longitude": {"field": "Long", "type": "quantitative"},
+            "latitude": {"field": "Lat", "type": "quantitative"},
+            "size": {
+              "field": "NO_PERSONS",
+              "type": "quantitative",
+              "title": "Number of people involved",
+              "scale": {"domain": [1, 15]}
+            },
+            "color": {
+              "field": "SEVERITY",
+              "type": "nominal",
+              "title": "Severity",
+              "scale": {"scheme": "yelloworangered"}
+            }
+          
+          }
+      }
+    ]
+  }
