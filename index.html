@@ -12,15 +12,34 @@
     vegaEmbed('#vic_map', spec2).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
+
+    var spec1 = "interactive_map.vg.json";
+    vegaEmbed('#vic_map_interactive', spec1).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var spec3 = "bar_chart.vg.json";
+    vegaEmbed('#bar_chart', spec3).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
   </script>
+
+
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
 </head>
 <body>
     <h1>Victorian Road Accidents</h1>
-    <div id="vic_map">
 
+    <h3>Interactive Map - Accidents by Day of the Week</h1>
+    <div id="vic_map_interactive">
+
+    </div>
+    <h3>Number of Accidents by Road Speed Limit</h1>
+    <div id="bar_chart">
+<!-- comment -->
     </div>
 
 
