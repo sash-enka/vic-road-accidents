@@ -1,0 +1,30 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Bar graph - Accidents by Road Geometry"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
+    },
+    "transform": [
+      {
+        "filter": "datum.SPEED_ZONE != 999"
+      },
+      {
+        "filter": "datum.SPEED_ZONE != 777"
+      },
+      {
+        "filter": "datum.SPEED_ZONE != 888"
+      }
+    ],
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "SPEED_ZONE",
+        "title": "Speed Limit (km/h)",
+        "sort": ["110","100", "90", "80", "75", "70", "60", "50", "40"]
+        },
+      "x": {
+        "aggregate": "count",
+        "title": "Number of Road Accidents"
+      }
+    }
+  }
