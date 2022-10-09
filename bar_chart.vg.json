@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Bar graph - Accidents by Road Geometry"},
+    "title": {"text": "Bar graph - Accidents by Road Speed Limit"},
     "data": {
       "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
     },
