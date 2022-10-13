@@ -33,6 +33,11 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
+    var top8LGA = "line_chart_LGAs.vg.json";
+    vegaEmbed('#top8LGA', top8LGA).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
   </script>
 
 
@@ -114,7 +119,20 @@
 
     <br>
 
-    <h3>LGAs - Further Exploration with Interaction</h1>
+    <h3>LGAs with the Highest Number of Accidents</h1>
+      <div class="pure-g">
+        <div class="pure-u-1" id="top8LGA"></div>
+        <div class="pure-u-1">
+          <p>
+           The above line graph depicts accidents over time for each of the top 8 LGAs which had the 
+           highest number of accidents in the year. 
+          </p>
+        </div>
+    </div>
+
+    <br>
+
+    <h3>Further Exploration with Interaction</h1>
       <div class="pure-u-1">
         <p>Further explore the accident that have taken place in the LGAs with the highest number of road accidents. 
           The following exploratory visualisation allows you to filter the accidents by LGAs and accident severity. 
