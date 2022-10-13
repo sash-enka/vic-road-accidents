@@ -5,7 +5,12 @@
   <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
-  
+ 
+  <!-- importing google fonts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat&family=Jost&family=Lato&family=Merriweather+Sans:wght@700&family=Montserrat:wght@400;900&family=Playfair+Display&family=Source+Sans+Pro&family=Square+Peg&family=Ubuntu&display=swap" rel="stylesheet">
+
   <script type="text/javascript">
 
     var map1 = "interactive_map1.vg.json";
@@ -32,33 +37,87 @@
 
 
   <!-- CSS file -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.1.0/build/pure-min.css" integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
   
 </head>
 <body>
-    <h1>Victorian Road Accidents</h1>
+    <h1>Victorian Road Accidents in 2020</h1>
+    <h4 class="subheading">Lets explore 2020's Victorian road incident data</h4>
+    <br>
 
     <h3>Victorian Road Accidents - Interactive Map</h1>
-    <div id="interactive_map1">
+    <div class="pure-g">
+        <div class="pure-u-1" id="interactive_map1"></div>
+        <div class="pure-u-1"> 
+          <p> Interactive map above displays the location of ll Victorian road incidents in 2020. 
+            The size of the circle represents the number of people involved in the incident. The larger 
+            the circle, the more people were involved. The colour of the circle represents the type of 
+            incident that took place. Click on an accident type via the legend to further filter the 
+            visualisation.
 
+            Additionally, you are able to use the Zoom toggle to get a clearer view of the accidents, 
+            as you Zoom into Melbourne city - the locality with the highest number of road accidents in 2020. 
+          </p>
+        </div>
     </div>
+    
+    <br>
+
     <h3>Number of Accidents by Accident Type</h1>
-    <div id="area_chart">
 
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <p>
+            The colour densities in the above interactive map shows us that the most common
+            types of accidents were collisions with otheer vehicles, and collisions with fixed objects. 
+            The following stacked area chart further elaborates on this by showing you the exact 
+            distribution of accident types, along with a timeframe, in months. 
+          </p>
+        </div>
+        <div class="pure-u-1-2" id="area_chart"></div>
     </div>
+
+    <br>
   
     <h3>Number of Accidents by Region</h1>
-    <div id="accident_regions">
-
+      <div class="pure-g">
+        <div class="pure-u-1-2" id="accident_regions"></div>
+        <div class="pure-u-1-2">
+          <p>
+            This pie chart displays the distribution of Victorian road accidents on 
+            the separate regions. It is made clear with this visualisatio that the 
+            Metropolitan North West, and Metropolitan South East regions have a disproportionate 
+            amount of car accidents compared to the other regions. Reasons for this could be the fact that
+            these areas are more populated and have well established transport infrastructure; 
+            putting more people on their roads and transport network. 
+          </p>
+        </div>
     </div>
+
+    <br>
   
     <h3>LGAs with the Highest Number of Accidents</h1>
-    <div id="topLGA">
-
+      <div class="pure-g">
+        <div class="pure-u-1-2">
+          <p>
+            The following visualisation shows us the spread of accidents across the different LGAs. 
+            As you can see, the LGAs that have the highest nuber of road accidents are Melbourne, Casey, 
+            Geelong, Hume, Dandenong and Monash. Several factors can contribute to this outcome, including 
+            the population and area of the relevant LGA. 
+          </p>
+        </div>
+        <div class="pure-u-1-2" id="topLGA"></div>
     </div>
-  
-    
 
+    <br>
+
+    <h3>LGAs - Further Exploration with Interaction</h1>
+      <div class="pure-u-1">
+        <p>Further explore the accident that have taken place in the LGAs with the highest number of road accidents. 
+          The following exploratory visualisation allows you to filter the accidents by LGAs and accident severity. 
+        </p>
+      </div>
 
 </body>
 </html>
