@@ -1,0 +1,32 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Stock prices of 5 Tech Companies over Time.",
+    "data": {"url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"},
+    "mark": "line",
+    "width": 500,
+    "title": "Accidents over time, for the top 8 LGAs",
+    "transform": [
+        {"filter": 
+            {"field": "LGA_NAME", 
+                "oneOf": ["MELBOURNE", "CASEY", "GEELONG", "HUME", "DANDENONG", "MONASH", "BRIMBANK", "WHITTLESEA" 
+                   ]}}
+    ],
+    "encoding": {
+        "x": {
+            "timeUnit": "month", "field": "ACCIDENTDATE",
+            "title": "Time"
+          },
+          "y": {
+            "aggregate": "count",
+            "title": "Number of Accidents",
+            "type": "quantitative",
+            "scale": {"domain": [0, 40]}
+          },
+      "color": {"field": "LGA_NAME", "type": "nominal", "title": "LGA"},
+      "tooltip": [
+          {"field": "LGA_NAME", "title": "LGA"},
+          {"timeUnit": "month", "field": "ACCIDENTDATE", "title": "Month"},
+          {"aggregate": "count", "title": "Number of Accidents"}
+      ]
+    }
+  }
