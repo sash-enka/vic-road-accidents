@@ -10,11 +10,15 @@
       }
     },
     "title": {"text": "Victorian Road Accidents"},
+    "projection": {
+      "center": [144.9631, -37],
+      "scale": 4000
+    },
     "layer": [
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/VicRoads_Regions.topojson",
-      "format": {"type": "topojson", "feature": "VicRoads_Regions"}
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/LGA_2022_AUST_GDA2020.json",
+      "format": {"type": "topojson", "feature": "LGA_2022_AUST_GDA2020"}
         },
         "mark": {
           "type": "geoshape", "fill": "whitesmoke", "stroke": "lightgray"
@@ -22,8 +26,11 @@
       },
       {
         "data": {
-          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
         },
+        "transform": [
+          {"filter": "datum.SPEED_ZONE != 999"}, 
+          {"filter": "datum.SPEED_ZONE != 888"}],
         "mark": {"type": "circle", "tooltip": {"content": "data"}},
         "encoding": {
           "longitude": {"field": "Long", "type": "quantitative"},
