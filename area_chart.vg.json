@@ -1,0 +1,27 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500, "height": 500,
+    "title": "Accident Types",
+    "data": {"url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"},
+    "mark": "area",
+    "encoding": {
+      "x": {
+        "timeUnit": "month", "field": "ACCIDENTDATE",
+        "title": "Time"
+      },
+      "y": {
+        "aggregate": "count",
+        "scale": {"domain": [0, 700]},
+        "title": "Number of Accidents"
+      },
+      "color": {
+        "field": "Accident Type Desc"
+      },
+      "tooltip": [
+          {"field": "Accident Type Desc", "title": "Accident Type"},
+          {"aggregate": "count", "title": "Number of Accidents"},
+          {"timeUnit": "month", "field": "ACCIDENTDATE", "title": "Month"}
+      ]
+    }
+  }
+  

@@ -1,0 +1,17 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Number of Accidents by Region"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
+    },
+    "mark": {"type": "arc", "innerRadius": 45, "tooltip": true},
+    "encoding": {
+      "theta": {"aggregate": "count", "type": "quantitative"},
+      "color": {"field": "REGION_NAME", "type": "nominal", "title": "Region"},
+      "tooltip": [
+        {"field": "REGION_NAME", "title": "Region"},
+        {"aggregate": "count", "title": "Number of Accidents"}
+      ]
+    }
+  }
+  

@@ -1,0 +1,71 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 800,
+    "height": 450,
+    "config": {
+      "background": "aliceblue",
+      "axis": {
+        "grid": true,
+        "gridColor": "#dedede"
+      }
+    },
+    "title": {"text": "Victorian Road Accidents"},
+    "params": [
+        {
+            "name": "zoom_level",
+            "value": 10000,
+            "bind": {
+                "input": "range",
+                "min": 3500,
+                "max": 60000,
+                "step": 100,  
+                "name": "Zoom: "
+             }
+        }
+    ],
+    "projection": {
+      "center": [145.1, -38],
+      "scale": {"expr": "zoom_level"}
+    },
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/LGA_2022_AUST_GDA2020.json",
+      "format": {"type": "topojson", "feature": "LGA_2022_AUST_GDA2020"}
+        },
+        "mark": {
+          "type": "geoshape", "fill": "whitesmoke", "stroke": "lightgray"
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
+        },
+         "params": [{
+            "name": "chooseAccidentType",
+            "select": {"type": "point", "fields": ["Accident Type Desc"]},
+            "bind": "legend"
+        }],
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "encoding": {
+          "longitude": {"field": "Long", "type": "quantitative"},
+          "latitude": {"field": "Lat", "type": "quantitative"},
+          "color": {
+            "field": "Accident Type Desc",
+            "type": "nominal",
+            "title": "Accident Type"
+          },
+          "size": {
+            "field": "NO_PERSONS",
+            "type": "quantitative",
+            "title": "Number of people involved",
+            "scale": {"domain": [1, 25]}
+          },
+          "opacity": {
+              "condition": {"param": "chooseAccidentType", "value": 0.8},
+              "value": 0.0
+          }
+        }
+      }
+    ]
+  }
