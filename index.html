@@ -8,18 +8,23 @@
   
   <script type="text/javascript">
 
-    var spec2 = "vic_accidents.vg.json";
-    vegaEmbed('#vic_map', spec2).then(function(result) {
+    var map1 = "interactive_map1.vg.json";
+    vegaEmbed('#interactive_map1', map1).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    var spec1 = "interactive_map.vg.json";
-    vegaEmbed('#vic_map_interactive', spec1).then(function(result) {
+    var areaChart = "area_chart.vg.json";
+    vegaEmbed('#area_chart', areaChart).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
-    var spec3 = "bar_chart.vg.json";
-    vegaEmbed('#bar_chart', spec3).then(function(result) {
+    var accidentRegions = "pie_chart.vg.json";
+    vegaEmbed('#accident_regions', accidentRegions).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+    
+    var topLGA = "accidents_region.vg.json";
+    vegaEmbed('#topLGA', topLGA).then(function(result) {
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
@@ -33,14 +38,26 @@
 <body>
     <h1>Victorian Road Accidents</h1>
 
-    <h3>Interactive Map - Accidents by Day of the Week</h1>
-    <div id="vic_map_interactive">
+    <h3>Victorian Road Accidents - Interactive Map</h1>
+    <div id="interactivem_map1">
 
     </div>
-    <h3>Number of Accidents by Road Speed Limit</h1>
-    <div id="bar_chart">
-<!-- comment -->
+    <h3>Number of Accidents by Accident Type</h1>
+    <div id="area_chart">
+
     </div>
+  
+    <h3>Number of Accidents by Region</h1>
+    <div id="accident_regions">
+
+    </div>
+  
+    <h3>LGAs with the Highest Number of Accidents</h1>
+    <div id="topLGA">
+
+    </div>
+  
+    
 
 
 </body>
