@@ -1,0 +1,23 @@
+body {
+    margin: 50px 100px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #edede9;
+  }
+
+h1, h2, h3 {
+    font-family: 'Merriweather Sans', sans-serif; 
+    text-align: center;
+}
+
+.subheading {
+    text-align: center;
+    font-family: 'Lato', sans-serif; 
+}
+
+p {
+    font-family: 'Lato', sans-serif; 
+    margin: 0px 150px;
+    text-justify: inter-word;
+}
+  
