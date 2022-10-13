@@ -1,13 +1,15 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {"text": "Top 8 LGAs with the highest number of accidents"},
+    "title": {"text": "LGAs with the highest number of accidents"},
     "data": {
       "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
     },
     "transform": [
         {"filter": 
             {"field": "LGA_NAME", 
-                "oneOf": ["MELBOURNE", "CASEY", "GEELONG", "HUME", "DANDENONG", "MONASH", "BRIMBANK", "WHITTLESEA"]}}
+                "oneOf": ["MELBOURNE", "CASEY", "GEELONG", "HUME", "DANDENONG", "MONASH", "BRIMBANK", "WHITTLESEA", 
+                    "DAREBIN", "WYNDHAM", "MORELAND", "YARRA RANGES", "YARRA", "KINGSTON", "WHITEHORSE", "BOROONDARA", "MORNINGTON PENINSULA", 
+                    "STONNINGTON", "BALLARAT", "MELTON", "KNOX", "BENDIGO", "PORT PHILIP", "FRANKSTON", "CARDINIA"]}}
     ],
     "mark": "bar",
     "encoding": {
