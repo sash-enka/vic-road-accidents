@@ -1,12 +1,11 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "width": 850,
-  "height": 500,
+  "width": 1500,
   "config": {
-    "background": "aliceblue",
+    "background": "#cee5f2",
       "axis": {
         "grid": true,
-        "gridColor": "#cee5f2"
+        "gridColor": "#dedede"
       }
   },
   "title": "Victorian Road Accidents by LGA, Road Geometry, and Number of People Involved",

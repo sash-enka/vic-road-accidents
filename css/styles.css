@@ -42,10 +42,15 @@ p {
 
 .vis {
     border: 1px solid black;
+    margin-bottom: 50px
 }
 
 .map {
     width: 1500;
     height: 600;
+}
+
+.pure-g .pure-g--gutter > div > * {
+    margin: 0 0.5rem;
 }
   
