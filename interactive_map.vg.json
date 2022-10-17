@@ -1,87 +1,79 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 850,
-    "height": 500,
-    "config": {
-      "background": "aliceblue",
-        "axis": {
-          "grid": true,
-          "gridColor": "#dedede"
-        }
-    },
-    "title": "Victorian Road Accidents",
-    "params": [
-      {
-        "name": "zoom_level",
-        "value": 30000,
-        "bind": {
-          "input": "range",
-          "min": 3500,
-          "max": 60000,
-          "step": 100,  
-          "name": "Zoom: "
-        }
-      },
-      {
-        "name": "select_day",
-        "value": 1,
-        "bind": {
-          "input": "select",
-          "options": [1,2,3,4,5,6,7],
-          "labels": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-          "name": "Day of the Week: "
-        }
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 850,
+  "height": 500,
+  "config": {
+    "background": "aliceblue",
+      "axis": {
+        "grid": true,
+        "gridColor": "#dedede"
       }
-    ],
-    "projection": {
-      "center": [145.1, -38],
-      "scale": {"expr": "zoom_level"}
+  },
+  "title": "Victorian Road Accidents by LGA, Road Geometry, and Number of People Involved",
+  "params": [
+    {
+      "name": "select_LGA",
+      "value": {"coordinates": [145.1155, -37.9016], "name": "MONASH"},
+      "bind": {
+        "input": "select",
+        "options": [
+          {"coordinates": [145.1155, -37.9016], "name": "MONASH"},
+          {"coordinates":  [144.9631, -37.8136], "name": "MELBOURNE"},
+          {"coordinates":  [145.248, -37.8715], "name": "KNOX"},
+          {"coordinates":  [145.2140, -37.9848], "name": "DANDENONG"}
+          ],
+        "labels": ["MONASH", "MELBOURNE", "KNOX", "DANDENONG"],
+        "name": "Select LGA: "
+      }
+    }
+  ],
+  "projection": {
+    "center": {"expr": "select_LGA.coordinates"},
+    "scale": 165000
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/LGA_2022_AUST_GDA2020.json",
+      "format": {"type": "topojson", "feature": "LGA_2022_AUST_GDA2020"}
+      },
+      "mark": {
+        "type": "geoshape",
+        "fill": "#ddd", 
+        "stroke": "white",
+        "strokeWidth": 1
+      }
     },
-    "layer": [
-      {
-        "data": {
-          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/layers/VicRoads_Regions.topojson",
-        "format": {"type": "topojson", "feature": "VicRoads_Regions"}
+    {
+      "data": {
+          "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
         },
         "transform": [
-          {
-            "calculate": "'Data is not available in ' + datum.properties.NAME",
-            "as": "note"
-          }
+          {"filter": "datum.LGA_NAME == select_LGA.name"}
         ],
-        "mark": {
-          "type": "geoshape",
-          "fill": "#ddd", 
-          "stroke": "white",
-          "strokeWidth": 1
-        },
-        "encoding": {"tooltip": {"field": "note"}}
-      },
-      {
-        "data": {
-            "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/NODE_ACCIDENTEVENT_CONDENSED.csv"
+        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "encoding": {
+          "longitude": {"field": "Long", "type": "quantitative"},
+          "latitude": {"field": "Lat", "type": "quantitative"},
+          "size": {
+            "field": "NO_PERSONS",
+            "type": "quantitative",
+            "title": "Number of people involved",
+            "scale": {"domain": [1, 25]}
           },
-          "transform": [
-            {"filter": "datum.DAY_OF_WEEK == select_day"}
-          ],
-          "mark": {"type": "circle", "tooltip": {"content": "data"}},
-          "encoding": {
-            "longitude": {"field": "Long", "type": "quantitative"},
-            "latitude": {"field": "Lat", "type": "quantitative"},
-            "size": {
-              "field": "NO_PERSONS",
-              "type": "quantitative",
-              "title": "Number of people involved",
-              "scale": {"domain": [1, 15]}
-            },
-            "color": {
-              "field": "SEVERITY",
-              "type": "nominal",
-              "title": "Severity",
-              "scale": {"scheme": "yelloworangered"}
-            }
-          
-          }
-      }
-    ]
-  }
+          "color": {
+            "field": "Road Geometry Desc",
+            "type": "nominal",
+            "title": "Road Geometry"
+          },
+          "tooltip": [
+            {"field": "LGA_NAME", "title": "LGA"},
+            {"field": "ACCIDENTDATE", "title": "Date"},
+            {"field": "Accident Type Desc", "title": "Accident Type"},
+            {"field": "NO_PERSONS", "title": "Number of People Involved"},
+            {"field": "Road Geometry Desc", "title": "Road Geometry"}
+          ]
+        }
+    }
+  ]
+}
