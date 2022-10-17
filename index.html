@@ -38,6 +38,50 @@
       // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
     }).catch(console.error);
 
+    var donutChart = "pie_chart.vg.json";
+    vegaEmbed('#donutChart', donutChart).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var LGAAreas = "topLGAArea.vg.json";
+    vegaEmbed('#LGAAreas', LGAAreas).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var accidentsByLGA = "accidentsByLGA.vg.json";
+    vegaEmbed('#accidentsByLGA', accidentsByLGA).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var map2 = "interactive_map.vg.json";
+    vegaEmbed('#interactive_map2', map2).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var vehicleMake = "vehicle_make.vg.json";
+    vegaEmbed('#vehicleMake', vehicleMake).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var yearOfManufacture = "car_manuf.vg.json";
+    vegaEmbed('#yearOfManufacture', yearOfManufacture).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var genderStack = "gender_stacked.vg.json";
+    vegaEmbed('#genderStack', genderStack).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    var genderProportion = "gender.vg.json";
+    vegaEmbed('#genderProportion', genderProportion).then(function(result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+
+
+
   </script>
 
 
@@ -48,16 +92,17 @@
 </head>
 <body>
     <h1>Victorian Road Accidents in 2019</h1>
-    <h4 class="subheading">
-      Lets explore 2019's Victorian road incident data. <br>
-      Traffic incidents in 2019 are explored to minimise the effect of the pandemic on general road traffic</h4>
-    <br>
 
-    <h3>Victorian Road Accidents - Interactive Map</h1>
+    <h4 class="subheading">
+      Lets explore 2019's Victorian road incident data. 
+     </h4>
+   <p class="note"> NOTE: 2019 data is explored to minimise the effect of the pandemic on general road traffic </p>
+     <br>
+    <h2>The different types of accidents</h2>
     <div class="pure-g">
         <div class="pure-u-1" id="interactive_map1"></div>
         <div class="pure-u-1"> 
-          <p> Interactive map above displays the location of ll Victorian road incidents in 2019. 
+          <p> The interactive map above displays the location of all Victorian road incidents in 2019. 
             The size of the circle represents the number of people involved in the incident. The larger 
             the circle, the more people were involved. The colour of the circle represents the type of 
             incident that took place. Click on an accident type via the legend to further filter the 
@@ -67,29 +112,53 @@
             as you Zoom into Melbourne city - the locality with the highest number of road accidents in 2020. 
           </p>
         </div>
+        <div class="pure-u-1-2">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+          </p>
+        </div>
+        <div class="pure-u-1-2" id="area_chart"></div>
     </div>
     
     <br>
 
-    <h3>Number of Accidents by Accident Type</h1>
+    <h2>Where are these accidents occuring?</h2>
 
-      <div class="pure-g">
+    <div class="pure-g">
+      <!-- bar chart - LGAs -->
+      <div class="pure-u-1" id="accidentsByLGA"></div>
+      <div class="pure-u-1"> 
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labor
+        </p>
+      </div>
+      <!-- donut chart - regions -->
+      <div class="pure-u-1-2" id="donutChart"></div>
+      <div class="pure-u-1-2">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+        </p>
+      </div>
+      <div class="pure-u-1-2" id="LGAAreas"></div>
+      <div class="pure-u-1-2" id="interactive_map2"></div>
+  </div>
+
+      <!-- <div class="pure-g">
         <div class="pure-u-1-2">
           <p>
             The colour densities in the above interactive map shows us that the most common
-            types of accidents were collisions with otheer vehicles, and collisions with fixed objects. 
+            types of accidents were collisions with other vehicles, and collisions with fixed objects. 
             The following stacked area chart further elaborates on this by showing you the exact 
             distribution of accident types, along with a timeframe, in months. 
           </p>
         </div>
         <div class="pure-u-1-2" id="area_chart"></div>
-    </div>
+    </div> -->
 
     <br>
   
-    <h3>Number of Accidents by Region</h1>
+    <h2>The vehicles involved</h2>
       <div class="pure-g">
-        <div class="pure-u-1-2" id="accident_regions"></div>
+        <div class="pure-u-1-2" id="vehicleMake"></div>
         <div class="pure-u-1-2">
           <p>
             This pie chart displays the distribution of Victorian road accidents on 
@@ -100,26 +169,41 @@
             putting more people on their roads and transport network. 
           </p>
         </div>
+        <div class="pure-u-1-2">
+          <p>
+            This pie chart displays the distribution of Victorian road accidents on 
+            the separate regions. It is made clear with this visualisatio that the 
+            Metropolitan North West, and Metropolitan South East regions have a disproportionate 
+            amount of car accidents compared to the other regions. Reasons for this could be the fact that
+            these areas are more populated and have well established transport infrastructure; 
+            putting more people on their roads and transport network. 
+          </p>
+        </div>
+        <div class="pure-u-1-2" id="yearOfManufacture"></div>
     </div>
 
     <br>
   
-    <h3>LGAs with the Highest Number of Accidents</h1>
+    <h2>The people involved</h2>
       <div class="pure-g">
-        <div class="pure-u-1-2">
-          <p>
-            The following visualisation shows us the spread of accidents across the different LGAs. 
-            As you can see, the LGAs that have the highest nuber of road accidents are Melbourne, Casey, 
-            Geelong, Hume, Dandenong and Monash. Several factors can contribute to this outcome, including 
-            the population and area of the relevant LGA. 
+        <div class="pure-u-1"> 
+          <p> The interactive map above displays the location of all Victorian road incidents in 2019. 
+            The size of the circle represents the number of people involved in the incident. The larger 
+            the circle, the more people were involved. The colour of the circle represents the type of 
+            incident that took place. Click on an accident type via the legend to further filter the 
+            visualisation.
+
+            Additionally, you are able to use the Zoom toggle to get a clearer view of the accidents, 
+            as you Zoom into Melbourne city - the locality with the highest number of road accidents in 2020. 
           </p>
         </div>
-        <div class="pure-u-1-2" id="topLGA"></div>
+        <div class="pure-u-1-2" id="genderStack"></div>
+        <div class="pure-u-1-2" id="genderProportion"></div>
     </div>
 
     <br>
 
-    <h3>LGAs with the Highest Number of Accidents</h1>
+    <!-- <h3>LGAs with the Highest Number of Accidents</h1>
       <div class="pure-g">
         <div class="pure-u-1" id="top8LGA"></div>
         <div class="pure-u-1">
@@ -137,7 +221,21 @@
         <p>Further explore the accident that have taken place in the LGAs with the highest number of road accidents. 
           The following exploratory visualisation allows you to filter the accidents by LGAs and accident severity. 
         </p>
+      </div> -->
+
+      <h2>Conclusion</h2>
+      <div class="pure-u-1"> 
+        <p> The interactive map above displays the location of all Victorian road incidents in 2019. 
+          The size of the circle represents the number of people involved in the incident. The larger 
+          the circle, the more people were involved. The colour of the circle represents the type of 
+          incident that took place. Click on an accident type via the legend to further filter the 
+          visualisation.
+
+          Additionally, you are able to use the Zoom toggle to get a clearer view of the accidents, 
+          as you Zoom into Melbourne city - the locality with the highest number of road accidents in 2020. 
+        </p>
       </div>
+     
 
 </body>
 </html>
