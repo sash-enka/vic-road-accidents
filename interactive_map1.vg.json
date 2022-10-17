@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": "container",
-    "height": "container",
+    "width": 1500,
+    "height": 600,
     "config": {
-      "background": "aliceblue",
+      "background": "#cce3de",
       "axis": {
         "grid": true,
         "gridColor": "#dedede"
