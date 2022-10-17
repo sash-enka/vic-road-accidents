@@ -10,22 +10,10 @@
       }
     },
     "title": {"text": "Victorian Road Accidents"},
-    "params": [
-        {
-            "name": "zoom_level",
-            "value": 10000,
-            "bind": {
-                "input": "range",
-                "min": 3500,
-                "max": 60000,
-                "step": 100,  
-                "name": "Zoom: "
-             }
-        }
-    ],
+    
     "projection": {
       "center": [145.1, -38],
-      "scale": {"expr": "zoom_level"}
+      "scale": 20000
     },
     "layer": [
       {
