@@ -39,4 +39,8 @@ p {
 .subheading {
     font-size: 24px;
 }
+
+.vis {
+    border: 1px solid black;
+}
   
