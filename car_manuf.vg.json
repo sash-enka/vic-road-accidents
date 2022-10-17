@@ -1,0 +1,26 @@
+    {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Number of Accidents by Manufacture Year of Vehicles Involved"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vehiclePersonData.csv"
+    },
+    "transform": [
+        {"filter": "datum.VEHICLE_YEAR_MANUF >= 1995"}
+    ],
+    "mark": {"type": "line", "point": {"filled": false, "fill": "white"}},
+    "encoding": {
+      "x": {
+        "field": "VEHICLE_YEAR_MANUF",
+        "title": "Vehicle Manufacture Year",
+        "sort": "ascending",
+        "axis": {
+            "labelAngle": 45
+        }
+        },
+      "y": {
+        "aggregate": "count",
+        "title": "Number of Accidents"
+      }
+    }
+  }
+  

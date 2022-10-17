@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Top 6 LGAs with the Highest Number of Accidents"},
+    "transform": [
+        {"filter": 
+            {"field": "LGA_NAME", 
+                "oneOf": ["MELBOURNE", "CASEY", "GEELONG", "HUME", "DANDENONG", "MONASH"]}}
+    ],
+    "width": 500,
+    "height": 40,
+    "data": {"url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"},
+    "mark": "area",
+    "encoding": {
+      "x": {"timeUnit": "month", "field": "ACCIDENTDATE", "axis": {"grid": false}, "title": "Time"},
+      "y": {
+        "aggregate": "count",
+        "type": "quantitative",
+        "title": "Total Accidents",
+        "scale": {"domain": [0, 35]},
+        "axis": {
+            "values": [0, 10, 20, 30]
+        }
+      },
+      "color": {
+        "field": "LGA_NAME",
+        "type": "nominal",
+        "legend": null
+      },
+      "row": {
+        "field": "LGA_NAME",
+        "type": "nominal",
+        "title": "LGA",
+        "header": {"labelAngle": 0, "labelAlign": "right"},
+        "spacing": 50
+      },
+      "tooltip": [
+          {"field": "LGA_NAME", "title": "LGA"},
+          {"aggregate": "count", "title": "Number of Accidents"},
+          {"timeUnit": "month", "field": "ACCIDENTDATE", "title": "Month"}
+      ]
+    }
+  }

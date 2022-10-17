@@ -1,0 +1,41 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {"text": "Number of Accidents by LGA"},
+    "data": {
+      "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
+    },
+     "params": [
+       {
+      "name": "selectRegion",
+      "value": "EASTERN REGION",
+      "bind": {
+        "input": "select",
+        "options": ["EASTERN REGION", "METROPOLITAN NORTH WEST REGION", "METROPOLITAN SOUTH EAST REGION", "NORTH EASTERN REGION", "NORTHERN REGION", "SOUTH WESTERN REGION", "WESTERN REGION"],
+        "labels": ["Eastern", "North Western", "South Eastern", "North Eastern", "Northern", "South Western", "Western"],
+        "name": "Select Region: "
+      }
+    }],
+    "mark": "bar",
+    "transform": [
+      {"filter": "datum.REGION_NAME == selectRegion"}
+    ],
+    "encoding": {
+      "x": {
+        "field": "LGA_NAME",
+        "title": "LGA",
+        "sort":"-y",
+        "axis": {
+            "labelAngle": 45
+        }
+        },
+      "y": {
+        "aggregate": "count",
+        "title": "Number of Road Accidents"
+      },
+      "tooltip": [
+          {"aggregate": "count", "title": "Number of Accidents"},
+          {"field": "LGA_NAME", "title": "LGA"}
+      ]
+    }
+  }
+  

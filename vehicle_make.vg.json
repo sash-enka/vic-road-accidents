@@ -1,0 +1,97 @@
+{
+    "$schema": "https://vega.github.io/schema/vega/v5.json",
+    "width": 800,
+    "height": 500,
+    "title": {"text": "Top 15 Vehicle Makes"},
+    "padding": {"left": 5, "right": 5, "top": 20, "bottom": 0},
+    "autosize": "none",
+    "data": [
+      {
+        "name": "table",
+        "values": [
+          {"VEHICLE_MAKE": "TOYOTA", "Percentage": 0.224692131079107},
+          {"VEHICLE_MAKE": "HOLDEN", "Percentage": 0.156700062617408},
+          {"VEHICLE_MAKE": "FORD", "Percentage": 0.120173241494469},
+          {"VEHICLE_MAKE": "MAZDA", "Percentage": 0.0846378626591526},
+          {"VEHICLE_MAKE": "NISSAN", "Percentage": 0.0707054894594031},
+          {"VEHICLE_MAKE": "HYNDAI", "Percentage": 0.0602692548528491},
+          {"VEHICLE_MAKE": "MITSUB", "Percentage": 0.0600083489876852},
+          {"VEHICLE_MAKE": "HONDA", "Percentage": 0.0522333542058025},
+          {"VEHICLE_MAKE": "VOLKS", "Percentage": 0.0386140680442496},
+          {"VEHICLE_MAKE": "SUBARU", "Percentage": 0.0293780004174494},
+          {"VEHICLE_MAKE": "MERC", "Percentage": 0.0274994781882697},
+          {"VEHICLE_MAKE": "KIA", "Percentage": 0.0252035065748278},
+          {"VEHICLE_MAKE": "BMW", "Percentage": 0.0205072010018785},
+          {"VEHICLE_MAKE": "SUZUKI", "Percentage": 0.0156543519098309},
+          {"VEHICLE_MAKE": "ISUZU", "Percentage": 0.0137236485076185},
+        ]
+      }
+    ],
+    "scales": [
+      {
+        "name": "size",
+        "domain": {"data": "table", "field": "Percentage"},
+        "range": [1000, 50000]
+      },
+      {
+        "name": "color",
+        "type": "ordinal",
+        "domain": {"data": "table", "field": "VEHICLE_MAKE"},
+        "scheme": "greens"
+      }
+    ],
+    "marks": [
+      {
+        "name": "nodes",
+        "type": "symbol",
+        "from": {"data": "table"},
+        "encode": {
+          "enter": {
+            "fill": {"scale": "color", "field": "VEHICLE_MAKE"},
+            "xfocus": "400",
+            "yfocus": "250"
+          },
+          "update": {
+            "size": {"signal": "pow(2 * datum.Percentage, 2)", "scale": "size"},
+            "stroke": {"value": "white"},
+            "strokeWidth": {"value": 1},
+            "tooltip": 
+              {"field": "Percentage", "title": "Proportion of Accidents"},
+              
+          }
+        },
+        "transform": [
+          {
+            "type": "force",
+            "iterations": 100,
+            "static": false,
+            "forces": [
+              {
+                "force": "collide",
+                "iterations": 2,
+                "radius": {"expr": "sqrt(datum.size) / 2"}
+              },
+              {"force": "center", "x": 400, "y": 250},
+              {"force": "x", "x": "xfocus", "strength": 0.1},
+              {"force": "y", "y": "yfocus", "strength": 0.1}
+            ]
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "from": {"data": "nodes"},
+        "encode": {
+          "enter": {
+            "align": {"value": "center"},
+            "baseline": {"value": "middle"},
+            "fontSize": {"value": 15},
+            "fontWeight": {"value": "bold"},
+            "fill": {"value": "black"},
+            "text": {"field": "datum.VEHICLE_MAKE"}
+          },
+          "update": {"x": {"field": "x"}, "y": {"field": "y"}}
+        }
+      }
+    ]
+  }

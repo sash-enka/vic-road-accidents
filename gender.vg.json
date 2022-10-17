@@ -1,0 +1,34 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": { "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vehiclePersonData.csv"},
+    "mark": "bar",
+    "title": "Proportion of Total Accidents Caused by Gender and Age Group",
+    "width": {"step": 17},
+    "transform": [
+        {"filter": {"field": "SEX", "oneOf": ["M", "F"]}},
+        {"filter": "datum['Age Group'] != '0-4'"},
+        {"filter": "datum['Age Group'] != '5-12'"},
+        {"filter": "datum['Age Group'] != '13-15'"},
+        {"filter": "datum['Age Group'] != 'unknown'"},
+        {"calculate": "datum.SEX == 'F' ? 'Female' : 'Male'", "as": "Sex"}
+    ],
+    "encoding": {
+      "y": {
+        "aggregate": "count",
+        "title": "Proportion of Total Accidents",
+        "stack":  "normalize",
+        "axis": {
+            "values": [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+        }
+      },
+      "x": {"field": "Age Group"},
+      "color": {
+        "field": "Sex"
+      },
+      "tooltip": [
+        {"field": "Age Group"},
+        {"field": "Sex"},
+        {"aggregate": "y", "title": "Number of Accidents"}
+    ]
+    }
+  }
