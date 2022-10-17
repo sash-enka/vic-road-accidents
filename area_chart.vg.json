@@ -16,7 +16,8 @@
         "title": "Number of Accidents"
       },
       "color": {
-        "field": "Accident Type Desc"
+        "field": "Accident Type Desc",
+        "title": "Accident Type"
       },
       "tooltip": [
           {"field": "Accident Type Desc", "title": "Accident Type"},
