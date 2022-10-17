@@ -1,17 +1,32 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {"text": "Number of Accidents by Region"},
+    "width": 250,
+    "height": 250,
     "data": {
       "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"
     },
-    "mark": {"type": "arc", "innerRadius": 45, "tooltip": true},
     "encoding": {
-      "theta": {"aggregate": "count", "type": "quantitative"},
-      "color": {"field": "REGION_NAME", "type": "nominal", "title": "Region"},
+      "theta": {"aggregate": "count", "type": "quantitative", "stack": true},
+      "color": {
+        "field": "REGION_NAME", 
+        "type": "nominal", 
+        "title": "Region",
+        "legend": {
+          "labelExpr": "{'EASTERN REGION': 'Eastern Region', 'METROPOLITAN SOUTH EAST REGION': 'South East Region', 'METROPOLITAN NORTH WEST REGION': 'North West Region', 'NA': 'NA', 'NORTH EASTERN REGION': 'North Eastern Region', 'NORTHERN REGION': 'Northern Region', 'SOUTH WESTERN REGION': 'South Western Region', 'WESTERN REGION': 'Western Region'}[datum.label]"
+        }},
       "tooltip": [
         {"field": "REGION_NAME", "title": "Region"},
         {"aggregate": "count", "title": "Number of Accidents"}
       ]
-    }
+    },
+    "layer": [{
+      "mark": {"type": "arc", "outerRadius": 100, "innerRadius": 45}
+    }, {
+      "mark": {"type": "text", "radius": 112},
+      "encoding": {
+        "text": {"aggregate": "count", "type": "nominal"}
+      }
+    }]
   }
   
