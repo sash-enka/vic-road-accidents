@@ -4,6 +4,7 @@
     "title": "Accident Types",
     "data": {"url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vicRoadAccidents.csv"},
     "mark": "area",
+    "background": "#cee5f2",
     "encoding": {
       "x": {
         "timeUnit": "month", "field": "ACCIDENTDATE",
