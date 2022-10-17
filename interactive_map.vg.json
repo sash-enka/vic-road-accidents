@@ -6,7 +6,7 @@
     "background": "aliceblue",
       "axis": {
         "grid": true,
-        "gridColor": "#dedede"
+        "gridColor": "#cee5f2"
       }
   },
   "title": "Victorian Road Accidents by LGA, Road Geometry, and Number of People Involved",

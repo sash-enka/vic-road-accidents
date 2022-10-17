@@ -3,7 +3,7 @@
     "width": 1500,
     "height": 600,
     "config": {
-      "background": "#cce3de",
+      "background": "#cee5f2",
       "axis": {
         "grid": true,
         "gridColor": "#dedede"
