@@ -43,4 +43,9 @@ p {
 .vis {
     border: 1px solid black;
 }
+
+.map {
+    width: 1200px;
+    height: 500px
+}
   
