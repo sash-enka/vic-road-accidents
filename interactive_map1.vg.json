@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 1500,
-    "height": 600,
+    "width": "container",
+    "height": "container",
     "config": {
       "background": "aliceblue",
       "axis": {
@@ -9,7 +9,7 @@
         "gridColor": "#dedede"
       }
     },
-    "title": {"text": "Victorian Road Accidents"},
+    "title": {"text": "Victorian Road Accidents - Overview of Types of Accidents"},
     
     "projection": {
       "center": [145.1, -38],
@@ -34,14 +34,14 @@
             "select": {"type": "point", "fields": ["Accident Type Desc"]},
             "bind": "legend"
         }],
-        "mark": {"type": "circle", "tooltip": {"content": "data"}},
+        "mark": "circle",
         "encoding": {
           "longitude": {"field": "Long", "type": "quantitative"},
           "latitude": {"field": "Lat", "type": "quantitative"},
           "color": {
             "field": "Accident Type Desc",
             "type": "nominal",
-            "title": "Accident Type"
+            "title": "Accident Type (Click to filter)"
           },
           "size": {
             "field": "NO_PERSONS",
@@ -52,7 +52,14 @@
           "opacity": {
               "condition": {"param": "chooseAccidentType", "value": 0.8},
               "value": 0.0
-          }
+          }, 
+          "tooltip": [
+            {"field": "ACCIDENTDATE", "title": "Accident Date"},
+            {"field": "Accident Type Desc", "title": "Type of Accident"},
+            {"field": "Road Geometry Desc", "title": "Road Geometry"},
+            {"field": "NO_PERSONS", "title": "Number of People Involved"},
+            {"field": "LGA_NAME", "title": "LGA"}
+          ]
         }
       }
     ]
