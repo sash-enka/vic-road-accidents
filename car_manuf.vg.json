@@ -1,6 +1,7 @@
     {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": {"text": "Number of Accidents by Manufacture Year of Vehicles Involved"},
+    "background": "#cee5f2",
     "data": {
       "url": "https://raw.githubusercontent.com/sash-enka/vic-road-accidents/main/data/vehiclePersonData.csv"
     },
